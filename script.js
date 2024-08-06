@@ -1,4 +1,4 @@
-const apiToken = 'your_api_token'; // Замените на ваш API токен
+const apiToken = 'fccbfa717f79bd09b3816e2d19392bf39ce90920'; // Замените на ваш API токен
 const apiUrl = `https://api.pipedrive.com/v1/deals?api_token=${apiToken}`;
 
 async function createDeal(dealData) {
