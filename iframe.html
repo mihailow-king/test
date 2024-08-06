@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Window</title>
+</head>
+<body>
+  <form id="data-form">
+    <label for="title">Deal Title:</label>
+    <input type="text" id="title" name="title">
+    <label for="value">Deal Value:</label>
+    <input type="text" id="value" name="value">
+    <button type="button" onclick="sendMessage()">Send</button>
+  </form>
+  <script>
+    function sendMessage() {
+      const title = document.getElementById('title').value;
+      const value = document.getElementById('value').value;
+
+      const data = {
+        title: title,
+        value: value,
+        currency: 'USD',
+        user_id: 1,
+        person_id: 1,
+        org_id: 1
+      };
+
+      window.parent.postMessage(data, '*');
+    }
+  </script>
+</body>
+</html>
