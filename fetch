@@ -1,0 +1,38 @@
+// Пример использования fetch для создания сделки в Pipedrive
+const apiToken = 'fccbfa717f79bd09b3816e2d19392bf39ce90920'; // Замените на ваш API токен
+const apiUrl = `https://api.pipedrive.com/v1/deals?api_token=${apiToken}`;
+
+async function createDeal(dealData) {
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dealData)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Deal created successfully:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating deal:', error);
+  }
+}
+
+// Пример данных для создания сделки
+const dealData = {
+  title: 'New Deal',
+  value: 1000,
+  currency: 'USD',
+  user_id: 1,
+  person_id: 1,
+  org_id: 1
+};
+
+// Вызов функции для создания сделки
+createDeal(dealData);
